@@ -17,8 +17,8 @@ export default function Navbar(params) {
     const router = useRouter();
     const [routes, setRoutes] = useState([
         {name: 'Inicio',path: '/'},
-        {name: 'Proyectos',path: '/projects'},
-        {name: 'Sobre mi',path: '/about'}
+        {name: 'Proyectos',path: '/proyectos'},
+        {name: 'Contactame',path: '/contactame'}
     ])
 
     const {darkmode, setDarkmode } = useDarkMode()
@@ -28,7 +28,7 @@ export default function Navbar(params) {
             className={styles.navbar}
             position={'fixed'}
             width={'full'}
-            bg={darkmode ? 'blackAlpha.900' : 'gray.100'}
+            bg={darkmode ? 'blackAlpha.900' : 'gray.50'}
             opacity={0.95}
             py={3}
             px={4}

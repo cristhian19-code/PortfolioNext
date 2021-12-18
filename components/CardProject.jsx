@@ -5,14 +5,15 @@ import {
     Button
 } from '@chakra-ui/react'
 import { useDarkMode } from '../hooks/useDarkMode'
-
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/router'
 
 const ButtonMotion = motion(Button)
 
-export default function CardProject() {
+export default function CardProject({project}) {
     const { darkmode } = useDarkMode();
+    const route = useRouter();
     return (
         <Box
             borderRadius={10}
@@ -29,14 +30,15 @@ export default function CardProject() {
                     fontSize={25}
                     fontWeight={'bold'}
                 >
-                    Dashboard Media
+                    {project.title}
                 </Text>
-                <Text textAlign={'justify'} fontSize={12}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci fugiat tempora veritatis quo, nobis officia iste ea neque rerum, laboriosam veniam labore amet! Voluptates, saepe. Magnam voluptates itaque officiis fugit?</Text>
+                <Text textAlign={'justify'} fontSize={12}>{project.description}</Text>
                 <ButtonMotion
                     style={{ marginTop: 15 }}
                     opacity={1}
                     colorScheme={!darkmode ? 'blue' : 'yellow'}
                     variant={'outline'}
+                    onClick={ ()=>{ route.push(`/project/${project.id}`) }}
                     whileHover={{
                         scale: 1.1
                     }}
