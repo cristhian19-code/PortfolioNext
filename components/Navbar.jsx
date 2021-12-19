@@ -60,7 +60,10 @@ export default function Navbar(params) {
                     }}
                 >
                 <IconButton
-                    onClick={ ()=>{ setDarkmode(!darkmode) } }
+                        onClick={() => {
+                            localStorage.setItem('darkmode', !darkmode);
+                            setDarkmode(!darkmode)
+                        }}
                     colorScheme={darkmode ? 'yellow' : 'blue'}
                     color={'white'}
                     icon={

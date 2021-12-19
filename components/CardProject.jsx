@@ -23,7 +23,7 @@ export default function CardProject({project}) {
             width={350}
             textAlign={'center'}
         >
-            <Image borderRadius={10} src='https://cdn.dribbble.com/users/2741095/screenshots/15339860/media/e1ab0686ced8aeef09625ed093709a47.png' width={'full'}/>
+            <Image borderRadius={10} src={project.url_img} width={'full'} height={210} />
             
             <Box p={3}>
                 <Text
@@ -38,7 +38,7 @@ export default function CardProject({project}) {
                     opacity={1}
                     colorScheme={!darkmode ? 'blue' : 'yellow'}
                     variant={'outline'}
-                    onClick={ ()=>{ route.push(`/project/${project.id}`) }}
+                    onClick={() => { route.push(`/project/${project._id}`) }}
                     whileHover={{
                         scale: 1.1
                     }}
