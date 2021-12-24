@@ -15,6 +15,7 @@ export default function Layout({ children }) {
                 color={darkmode ? 'gray.300' :'blackAlpha.600'}
                 direction={'column'}
                 alignItems={'center'}
+                minH={'100vh'}
             >
                 <Presentation />
                 

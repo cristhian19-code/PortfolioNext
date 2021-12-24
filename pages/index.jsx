@@ -6,11 +6,10 @@ import { useState } from 'react'
 import FontAWList from '../components/FontAWList'
 import Technologies from '../components/Technologies'
 import styles from '../styles/index.module.css'
-import CardProject from '../components/CardProject'
 import Layout from '../components/Layout'
 import { motion } from 'framer-motion'
 
-export default function Home() {
+export default function Home({ data }) {
   const [technologies, setTechnologies] = useState(
     [
       {
@@ -32,6 +31,15 @@ export default function Home() {
         techno: [
           'Nodejs',
           'MongoDB',
+          'PHP',
+          'Firebase'
+        ]
+      },
+      {
+        name: 'Diseño',
+        techno: [
+          'Figma',
+          'AdobeXD',
         ]
       }
     ]
@@ -52,7 +60,7 @@ export default function Home() {
             }}
             transition={{duration: 1.5}}
           >
-            <Text>Hola soy Christian Ricardo y estoy en 5to ciclo de la <strong>Univesidad Nacional de Ingerieria</strong>, cuento con mas de 2 años de experiencia en mundo del desarrollo frontend, me apaciona este mundo y cada dia quiero aprender cosas nuevas que me hagan crecer profesionalmente</Text>  
+          <Text>Hola soy Christian Ricardo y estoy en 5to ciclo en la carrera de <strong>Ingenieria de Sistemas</strong> de la Univesidad Nacional de Ingerieria, cuento con mas de 2 años de experiencia en mundo del desarrollo frontend, soy muy apacionado en lo que hago </Text>  
           </motion.div>
           
           <Text mt={20} fontSize={35} fontWeight={'bold'}>Conocimientos</Text>
@@ -64,18 +72,8 @@ export default function Home() {
                   <Technologies key={techno.name} techno={ techno } />
                   )
                 })
-              }
-          </Flex>
-
-          <Text mt={20} fontSize={35} fontWeight={'bold'}>Algunos Proyectos</Text>
+          }
         </Flex>
-        <Flex
-          justifyContent={'center'}
-          my={10}
-          gap={10}
-          wrap={'wrap'}
-          >
-          
         </Flex>
     </Layout>
   )

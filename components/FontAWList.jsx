@@ -1,10 +1,11 @@
 import {
-  faVuejs,
-  faReact,
-  faHtml5,
-  faCss3,
-  faJs,
-  faBootstrap
+    faVuejs,
+    faReact,
+    faHtml5,
+    faCss3,
+    faJs,
+    faBootstrap,
+    faFigma,
 } from '@fortawesome/free-brands-svg-icons'
 import FontAWItem from './FontAWItem'
 
@@ -18,7 +19,8 @@ export default function FontAWList() {
         {name: 'js',icon: faJs, color: '#F1C40F'},
         {name: 'vue',icon: faVuejs, color: '#28B463'},
         {name: 'react',icon: faReact, color: '#2471A3'},
-        {name: 'bootstrap',icon: faBootstrap, color: '#7D3C98'},
+        { name: 'bootstrap', icon: faBootstrap, color: '#7D3C98' },
+        { name: 'figma', icon: faFigma, color: '#38F429' },
     ])
     return (
         <Flex justifyContent={'center'} gap={5} mt={5}>

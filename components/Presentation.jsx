@@ -27,10 +27,10 @@ export default function Presentation() {
         </Text>
         <ImageMotion
           animate={{
-            scale: [1, 1.1, 0.9, 1.2 , 1],
-            borderRadius: ["30%","50%","40%","50%","20%"]
+            scale: [1, 1.1, 0.9, 1],
+            borderRadius: ["30%", "50%", "40%", "20%"]
           }}
-          transition={{duration: 1.5}}
+          transition={{ duration: 1 }}
           whileHover={{
             scale: 1.05
           }}

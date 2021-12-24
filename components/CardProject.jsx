@@ -8,6 +8,7 @@ import { useDarkMode } from '../hooks/useDarkMode'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
+import styles from '../styles/index.module.css'
 
 const ButtonMotion = motion(Button)
 
@@ -23,7 +24,7 @@ export default function CardProject({project}) {
             width={350}
             textAlign={'center'}
         >
-            <Image borderRadius={10} src={project.url_img} width={'full'} height={210} />
+            <Image borderRadius={10} src={project.img} width={'full'} height={210} />
             
             <Box p={3}>
                 <Text
@@ -32,7 +33,7 @@ export default function CardProject({project}) {
                 >
                     {project.title}
                 </Text>
-                <Text textAlign={'justify'} fontSize={12}>{project.description}</Text>
+                <Text className={styles.description} dangerouslySetInnerHTML={{ __html: project.description }} textAlign={'justify'} fontSize={12}></Text>
                 <ButtonMotion
                     style={{ marginTop: 15 }}
                     opacity={1}
@@ -48,7 +49,7 @@ export default function CardProject({project}) {
                         y: "5px"
                     }}
                 >
-                    View
+                    Ver detalle
                     <ArrowForwardIcon />
                 </ButtonMotion>
             </Box>

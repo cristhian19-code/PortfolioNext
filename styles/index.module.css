@@ -25,3 +25,8 @@
         flex-direction: column;
     }
 }
+
+.description ul{
+    margin-top: 10px;
+    margin-left: 40px;
+}
