@@ -20,7 +20,7 @@ export default function FontAWList() {
         {name: 'vue',icon: faVuejs, color: '#28B463'},
         {name: 'react',icon: faReact, color: '#2471A3'},
         { name: 'bootstrap', icon: faBootstrap, color: '#7D3C98' },
-        { name: 'figma', icon: faFigma, color: '#38F429' },
+        { name: 'figma', icon: faFigma, color: '#EA4C1D' },
     ])
     return (
         <Flex justifyContent={'center'} gap={5} mt={5}>

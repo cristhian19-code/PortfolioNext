@@ -18,7 +18,6 @@ export default function CardProject({project}) {
     return (
         <Box
             borderRadius={10}
-            p={1}
             boxShadow={'lg'}
             bg={darkmode ? 'blackAlpha.200' : 'yellow.50'}
             width={350}

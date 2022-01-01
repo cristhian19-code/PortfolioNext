@@ -1,5 +1,5 @@
 import CardProject from "../components/CardProject"
-import { Flex, Select } from '@chakra-ui/react'
+import { Flex, Select, Box } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import Layout from '../components/Layout'
 import { SpinnerIcon, ArrowDownIcon } from '@chakra-ui/icons'
@@ -29,7 +29,7 @@ export default function Projects({ data }) {
   return (
     <Layout>
       <Flex>
-        <Select bg={'tomato'} color={'white'} icon={<ArrowDownIcon />} variant={'outline'} onChange={handleSelect} placeholder='Todos'>
+        <Select bg={'teal.300'} color={'white'} icon={<ArrowDownIcon />} variant={'outline'} onChange={handleSelect} placeholder='Todos'>
           <option value='Vuejs'>Vuejs</option>
           <option value='Reactjs'>Reactjs</option>
           <option value='Angular'>Angular</option>
@@ -40,12 +40,15 @@ export default function Projects({ data }) {
       {
         loading
           ? (
-            <SpinnerMotion
-              initial={{ rotate: 0 }}
-              animate={{ rotate: 360 }}
-              margin={[50, 0, 50, 0]}
-              transition={{ duration: 2 }}
-              fontSize={100} color={'tomato'} />
+            <Box
+              marginTop={50}
+              marginBottom={50}>
+              <SpinnerMotion
+                initial={{ rotate: 0 }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 2 }}
+                fontSize={100} color={'teal.300'} />
+            </Box>
           )
           : (
             <ProjectsMotion
@@ -78,7 +81,6 @@ export async function getStaticProps() {
     });
 
     const projects = await res.json();
-
     return {
       props: {
         data: projects.data

@@ -4,7 +4,7 @@ import {
 } from '@chakra-ui/react'
 import Presentation from '../components/Presentation'
 import { useDarkMode } from '../hooks/useDarkMode'
-
+import Footer from './Footer'
 export default function Layout({ children }) {
     const { darkmode } = useDarkMode();
     return (
@@ -20,6 +20,7 @@ export default function Layout({ children }) {
                 <Presentation />
                 
                 {children}
+                <Footer />
             </Flex>
         </div>
     )
