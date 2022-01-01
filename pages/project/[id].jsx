@@ -39,7 +39,7 @@ export default function ID({ data }) {
             </Box>
             {
                 isMounted ? (
-                    <Box padding={8} width={['100%']}>
+                    <Box padding={8} width={['100%', '50%']}>
                         <Text
                             fontWeight='bold'
                             textTransform='uppercase'
