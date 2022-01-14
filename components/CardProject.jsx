@@ -32,7 +32,6 @@ export default function CardProject({project}) {
                 >
                     {project.title}
                 </Text>
-                <Text className={styles.description} dangerouslySetInnerHTML={{ __html: project.description }} textAlign={'justify'} fontSize={12}></Text>
                 <ButtonMotion
                     style={{ marginTop: 15 }}
                     opacity={1}

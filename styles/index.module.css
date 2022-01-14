@@ -4,25 +4,9 @@
     width: 60%;
 }
 
-.navbar {
-    display: flex;
-}
-
-.links {
-    display: flex;
-}
-
 @media (max-width: 900px) {
     .flex_container {
         width: 100%;
-    }
-
-    .navbar {
-        flex-direction: column;
-    }
-
-    .links {
-        flex-direction: column;
     }
 }
 

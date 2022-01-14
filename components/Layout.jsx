@@ -11,6 +11,7 @@ export default function Layout({ children }) {
         <div>
             <Navbar />
             <Flex
+                transition={'all 0.2s ease-in-out'}
                 bgColor={darkmode ? 'blackAlpha.900' : 'gray.100'}
                 color={darkmode ? 'gray.300' :'blackAlpha.600'}
                 direction={'column'}

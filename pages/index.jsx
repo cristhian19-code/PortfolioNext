@@ -10,6 +10,7 @@ import Layout from '../components/Layout'
 import { motion } from 'framer-motion'
 
 export default function Home({ data }) {
+  console.log(data);
   const [technologies, setTechnologies] = useState(
     [
       {
@@ -77,4 +78,21 @@ export default function Home({ data }) {
         </Flex>
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  try {
+    const res = await fetch('https://upload-projects.herokuapp.com/api/projects', {
+      method: 'GET'
+    });
+
+    const projects = await res.json();
+    return {
+      props: {
+        data: projects.data
+      }
+    }
+  } catch (err) {
+
+  }
 }

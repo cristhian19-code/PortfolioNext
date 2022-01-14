@@ -1,11 +1,16 @@
 import { ChakraProvider } from '@chakra-ui/react'
 
 import { DarkModeContext } from '../hooks/useDarkMode';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function MyApp({ Component, pageProps }) {
   const [darkmode, setDarkmode] = useState(false)
-
+  
+  useEffect(async () => {
+    const dark = await JSON.parse(localStorage.getItem('darkmode'));
+    setDarkmode(dark)
+  }, [])
+  
   return (
     <ChakraProvider>
       <DarkModeContext.Provider value={{

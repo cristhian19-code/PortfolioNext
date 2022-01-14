@@ -60,14 +60,19 @@ export default function ID({ data }) {
                         >
                             {data.title}
                         </Link>
-                        <Text className={styles.description} color='gray.500' dangerouslySetInnerHTML={{ __html: data.description }} textAlign={'justify'} fontSize={12}></Text>
+                        <Text className={styles.description} color='gray.500' dangerouslySetInnerHTML={{ __html: data.description }} textAlign={'justify'} fontSize={15}></Text>
+                        {
+                            data.inspiration && 
+                            (<Link target={'_blank'} href={data.inspiration} textColor={'teal.500'}>Inspiracion</Link>)
+                        }
                         <Flex gap={5} marginTop={5}>
                             <Button color={'white'} onClick={() => { handleLink('/proyectos') }} _hover={{ bgColor: 'blue.400' }} bgColor={'blue.500'}>
                                 Volver
                             </Button>
                             <Button color={'white'} onClick={() => { handleLink(data.link) }} _hover={{ bgColor: 'teal.400' }} bgColor={'teal.500'}>
                                 Ir
-                                <ExternalLinkIcon marginLeft={2} fontSize={15} /></Button>
+                                <ExternalLinkIcon marginLeft={2} fontSize={15} />
+                            </Button>
                         </Flex>
                     </Box>
                 ) : null
