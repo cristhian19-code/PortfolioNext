@@ -27,7 +27,7 @@ export default function ID({ data }) {
     const route = useRouter()
 
     return(
-        <Flex bgColor={'white'} padding={10} pt={20} height={'100vh'} display={'flex'} flexDirection={['column']} width={'full'} alignItems={'center'} justifyContent={'center'}>
+        <Flex bgColor={'white'} padding={10} pt={20} height={'full'} display={'flex'} flexDirection={['column']} width={'full'} alignItems={'center'} justifyContent={'center'}>
             <Box flexShrink={0} width={['90%', '90%', '50%', '50%']}>
                 <Image
                     borderRadius='lg'

@@ -10,7 +10,6 @@ import Layout from '../components/Layout'
 import { motion } from 'framer-motion'
 
 export default function Home({ data }) {
-  console.log(data);
   const [technologies, setTechnologies] = useState(
     [
       {
