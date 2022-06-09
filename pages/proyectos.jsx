@@ -22,7 +22,7 @@ export default function Projects({ data }) {
 
   return (
     <Layout>
-      <Flex>
+      <Flex mt={20}>
         <Select colorScheme={'blue'} icon={<ArrowDownIcon />} variant={'outline'} onChange={handleSelect} placeholder='Todos'>
           <option value='Vuejs'>Vuejs</option>
           <option value='Reactjs'>Reactjs</option>
