@@ -1,21 +1,43 @@
-import Navbar from "./Navbar";
+import { HamburgerIcon } from '@chakra-ui/icons'
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
 import {
-    Container,
     Flex,
     IconButton
 } from '@chakra-ui/react'
-import Link from 'next/link'
+
 import { useDarkMode } from '../hooks/useDarkMode'
-
-import Footer from './Footer'
 import useWindowDimensions from "../hooks/useWindowDimensions";
-import { HamburgerIcon } from '@chakra-ui/icons'
-import { useState } from "react";
-import { useEffect } from "react";
-import { motion } from "framer-motion";
+import Footer from './Footer'
 
-const ContainerMotion = motion(Container)
-const LinkMotion = motion(Link)
+const links = [
+    { name: "Inicio", to: "/" },
+    { name: "Proyectos", to: "/proyectos" },
+];
+
+const itemVariants = {
+    closed: {
+        opacity: 0
+    },
+    open: { opacity: 1 }
+};
+
+const sideVariants = {
+    closed: {
+        transition: {
+            staggerChildren: 0.8,
+            staggerDirection: -1
+        }
+    },
+    open: {
+        transition: {
+            delayChildren: 1,
+            staggerChildren: 0.8,
+            staggerDirection: 1
+        }
+    }
+};
 
 export default function Layout({ children }) {
     const { darkmode } = useDarkMode();
@@ -27,19 +49,6 @@ export default function Layout({ children }) {
         setIsOpen(!isOpen)
     }
 
-    // useEffect(() => {
-    //     if (width >= 768) {
-    //         setIsOpen(true)
-    //     }
-    // }, [width])
-    const navbarVariant = {
-        close: {
-            width: 0,
-        },
-        open: {
-            width: '100%',
-        },
-    }
 
     return (
         <div>
@@ -61,32 +70,59 @@ export default function Layout({ children }) {
                 {
                     width < 768 && (
                         <>
-                            <ContainerMotion
-                                display={'flex'}
-                                flexDirection={'column'}
-                                alignItems={'center'}
-                                justifyContent={'center'}
-                                bg={'black'}
-                                maxWidth={'100%'}
-                                h={'100vh'}
-                                variants={navbarVariant}
-                                top={0}
-                                left={0}
-                                initial={false}
-                                animate={isOpen ? 'open' : "close"}
-                                transition={{
-                                    duration: 0.3,
-                                }}
-                                position={'fixed'}
-                                padding={0}
-                            >
-                                <ContainerMotion
-
-                                >
-                                    <LinkMotion href="/"><a style={{ fontSize: 30, color: 'white' }}>Inicio</a></LinkMotion>
-                                    <LinkMotion href="/proyectos"><a style={{ fontSize: 30, color: 'white' }}>Proyectos</a></LinkMotion>
-                                </ContainerMotion>
-                            </ContainerMotion>
+                            <AnimatePresence>
+                                {isOpen && (
+                                    <motion.aside
+                                        initial={{ width: 0 }}
+                                        style={{
+                                            height: '100vh',
+                                            position: 'fixed',
+                                            top: 0,
+                                            left: 0,
+                                            backgroundColor: 'black'
+                                        }}
+                                        animate={{
+                                            width: '100vw'
+                                        }}
+                                        exit={{
+                                            width: 0,
+                                            transition: { delay: 0.8, duration: 0.8 }
+                                        }}
+                                        transition={{ duration: 0.8 }}
+                                    >
+                                        <motion.div
+                                            style={{
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                flexDirection: 'column',
+                                                justifyContent: 'center',
+                                                height: '100%'
+                                            }}
+                                            className="container"
+                                            initial="closed"
+                                            animate="open"
+                                            exit="closed"
+                                            variants={sideVariants}
+                                        >
+                                            {links.map(({ name, to, id }) => (
+                                                <motion.a
+                                                    style={{
+                                                        color: 'white',
+                                                        fontSize: 30,
+                                                        textAlign: 'center'
+                                                    }}
+                                                    variants={itemVariants}
+                                                    key={id}
+                                                    href={to}
+                                                    whileHover={{ scale: 1.1 }}
+                                                >
+                                                    {name}
+                                                </motion.a>
+                                            ))}
+                                        </motion.div>
+                                    </motion.aside>
+                                )}
+                            </AnimatePresence>
                             <IconButton
                                 position={'fixed'}
                                 bottom="10px"
