@@ -2,6 +2,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 
 import { DarkModeContext } from '../hooks/useDarkMode';
 import { useEffect, useState } from 'react';
+import '../styles/burger.css'
 
 function MyApp({ Component, pageProps }) {
   const [darkmode, setDarkmode] = useState(false)

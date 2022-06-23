@@ -8,19 +8,21 @@ import { useDarkMode } from '../hooks/useDarkMode'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
-import styles from '../styles/index.module.css'
+// import styles from '../styles/index.module.css'
 
 const ButtonMotion = motion(Button)
+const BoxMotion = motion(Box);
 
-export default function CardProject({project}) {
+export default function CardProject({project,variants}) {
     const { darkmode } = useDarkMode();
     const route = useRouter();
     return (
-        <Box
+        <BoxMotion
             borderRadius={10}
             boxShadow={'lg'}
             bg={darkmode ? 'blackAlpha.200' : 'yellow.50'}
             width={350}
+            variants={variants}
             textAlign={'center'}
         >
             <Image borderRadius={10} src={project.img} width={'full'} height={210} />
@@ -51,6 +53,6 @@ export default function CardProject({project}) {
                     <ArrowForwardIcon />
                 </ButtonMotion>
             </Box>
-        </Box>
+        </BoxMotion>
     )
 }

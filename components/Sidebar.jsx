@@ -1,79 +1,92 @@
-import { AnimatePresence, motion, useCycle } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const links = [
-  { name: "Home", to: "#", id: 1 },
-  { name: "About", to: "#", id: 2 },
-  { name: "Blog", to: "#", id: 3 },
-  { name: "Contact", to: "#", id: 4 }
+  { name: "Inicio", to: "/" },
+  { name: "Proyectos", to: "/proyectos" },
 ];
 
 const itemVariants = {
   closed: {
-    opacity: 0
+      opacity: 0
   },
   open: { opacity: 1 }
 };
 
 const sideVariants = {
   closed: {
-    transition: {
-      staggerChildren: 0.2,
-      staggerDirection: -1
-    }
+      transition: {
+          staggerChildren: 0.8,
+          staggerDirection: -1
+      }
   },
   open: {
-    transition: {
-      staggerChildren: 0.2,
-      staggerDirection: 1
-    }
+      transition: {
+          delayChildren: 1,
+          staggerChildren: 0.8,
+          staggerDirection: 1
+      }
   }
 };
 
-import React from 'react'
+const Sidebar = ({open}) => {
 
-const Sidebar = () => {
-    const [open, cycleOpen] = useCycle(false, true);
-
-    return (
-      <main>
-        <AnimatePresence>
-          {open && (
-            <motion.aside
-              initial={{ width: 0 }}
-              animate={{
-                width: 300
-              }}
-              exit={{
-                width: 0,
-                transition: { delay: 0.7, duration: 0.3 }
-              }}
-            >
-              <motion.div
-                className="container"
-                initial="closed"
-                animate="open"
-                exit="closed"
-                variants={sideVariants}
+  return (
+    <AnimatePresence>
+      {open && (
+        <motion.aside
+          initial={{ width: 0 }}
+          style={{
+            height: '100%',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            zIndex: 100,
+            backgroundColor: 'white'
+          }}
+          animate={{
+            width: '100%'
+          }}
+          exit={{
+            width: 0,
+            transition: { delay: 0.8, duration: 0.8 }
+          }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              height: '100%'
+            }}
+            className="container"
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={sideVariants}
+          >
+            {links.map(({ name, to },i) => (
+              <motion.a
+                style={{
+                  color: 'black',
+                  fontSize: 30,
+                  textAlign: 'center',
+                  textTransform: 'uppercase'
+                }}
+                variants={itemVariants}
+                key={i}
+                href={to}
+                whileHover={{ scale: 1.1 }}
               >
-                {links.map(({ name, to, id }) => (
-                  <motion.a
-                    key={id}
-                    href={to}
-                    whileHover={{ scale: 1.1 }}
-                    variants={itemVariants}
-                  >
-                    {name}
-                  </motion.a>
-                ))}
-              </motion.div>
-            </motion.aside>
-          )}
-        </AnimatePresence>
-        <div className="btn-container">
-          <button onClick={cycleOpen}>{open ? "Close" : "Open"}</button>
-        </div>
-      </main>
-    );
+                {name}
+              </motion.a>
+            ))}
+          </motion.div>
+        </motion.aside>
+      )}
+    </AnimatePresence>
+  );
 }
 
 export default Sidebar

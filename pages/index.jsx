@@ -4,11 +4,12 @@ import {
   Flex,
   Text,
   Box,
-  Container
+  Container,
+  Grid,
+  GridItem
 } from '@chakra-ui/react'
 
 import FontAWList from '../components/Fontawesome/FontAWList'
-
 import Technologies from '../components/Technologies'
 import Presentation from '../components/Presentation'
 
@@ -19,6 +20,7 @@ const BoxMotion = motion(Box);
 
 export default function Home({ data }) {
   const [loading, setLoading] = useState(true)
+
   const [technologies, setTechnologies] = useState(
     [
       {
@@ -103,30 +105,34 @@ export default function Home({ data }) {
 
   return (
     <Layout>
-      <Flex style={{ position: 'relative' }} direction={'column'}>
+      <Flex style={{ position: 'relative' }} direction={'column'} w={'100%'}>
 
         <Presentation />
 
-        <Box px={['10', '10', '72', '72']}>
-          <motion.div
-            style={{ height: '100vh' }}
-            initial={{
-              translateX: -50,
-              opacity: 0
-            }}
-            animate={{
-              translateX: 0,
-              opacity: 1
-            }}
-            transition={{ duration: 1.5 }}
+        <Box px={['0', '10', '50', '55']}>
+
+          <Grid
+            templateColumns={['repeat(1, 1fr)','repeat(1, 1fr)','repeat(1, 1fr)','repeat(2, 1fr)']}
+            gap={5}
+            w={'100%'}
+            alignItems='center'
+            style={{ height: '100vh', width: '100%' }}
           >
-            <Text>Hola soy Christian Ricardo y estoy en 7to ciclo en la carrera de <strong>Ingenieria de Sistemas</strong> de la Univesidad Nacional de Ingerieria, cuento con mas de 2 años de experiencia en mundo del desarrollo frontend, soy muy apacionado en lo que hago </Text>
-          </motion.div>
+            <GridItem>
+
+            </GridItem>
+            <GridItem>
+              <Text fontSize={[30,30,50,50,50]} fontWeight={'bold'} color={'whiteAlpha.800'}>
+                SOBRE MI
+              </Text>
+              <Text fontSize={[10,10,20,20,20]}>Estoy cursando el 7to ciclo de la carrera de <strong>Ingenieria de Sistemas</strong> en la Universidad Nacional de Ingerieria, cuento con mas de 2 años de experiencia en mundo del desarrollo frontend, soy muy apacionado en lo que hago.</Text>
+            </GridItem>
+          </Grid>
 
           <Container>
             <Text mt={20} fontSize={35} fontWeight={'bold'}>Conocimientos</Text>
             <FontAWList />
-            <Flex justifyContent={'center'} gap={5}>
+            <Flex justifyContent={'center'} gap={20}>
               {
                 technologies.map(techno => {
                   return (

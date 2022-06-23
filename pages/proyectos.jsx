@@ -1,6 +1,6 @@
 import CardProject from "../components/CardProject"
 import { Flex, Select } from '@chakra-ui/react'
-import { motion } from 'framer-motion'
+import { motion, } from 'framer-motion'
 import Layout from '../components/Layout'
 import { ArrowDownIcon } from '@chakra-ui/icons'
 import { useState } from "react"
@@ -10,6 +10,28 @@ const ProjectsMotion = motion(Flex)
 export default function Projects({ data }) {
   const [projects, setProjects] = useState(data)
 
+  const projectsVariants = {
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.4,
+      }
+    },
+    hidden: {
+      opacity: 1,
+    }
+  }
+
+  const projectVariant = {
+    show: {
+      opacity: 1,
+      scale: 1
+    },
+    hidden: {
+      opacity: 0,
+      scale: 0.5
+    }
+  }
   const handleSelect = (e) => {
     if (e.target.value) {
       const filter = data.filter(project => project.category === e.target.value)
@@ -30,10 +52,11 @@ export default function Projects({ data }) {
           <option value='Vanilla'>Vanilla</option>
         </Select>
       </Flex>
+      
       <ProjectsMotion
-        initial={{ translateY: 50, opacity: 0 }}
-        animate={{ translateY: 0, opacity: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+        initial="hidden"
+        animate="show"
+        variants={projectsVariants}
         justifyContent={'center'}
         gap={5}
         px={2}
@@ -42,7 +65,7 @@ export default function Projects({ data }) {
         {
           projects.map(project => {
             return (
-              <CardProject key={project.title} project={project} />
+              <CardProject variants={projectVariant} key={project.title} project={project} />
             )
           })
         }
