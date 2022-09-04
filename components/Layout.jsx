@@ -5,6 +5,7 @@ import { Flex } from '@chakra-ui/react'
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import Footer from './Footer'
 import Sidebar from './Sidebar';
+import Navbar from "./Navbar";
 
 export default function Layout({ children }) {
     const { mobile } = useWindowDimensions();
@@ -18,11 +19,9 @@ export default function Layout({ children }) {
 
     return (
         <div>
-            {/* {
-                width >= 768 ? (
-                    <Navbar />
-                ) : (<></>)
-            } */}
+            {
+                !mobile &&( <Navbar />)
+            }
             <Flex
                 transition={'all 0.2s ease-in-out'}
                 bgColor={'black'}

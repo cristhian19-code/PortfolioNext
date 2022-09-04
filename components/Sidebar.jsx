@@ -68,6 +68,7 @@ const Sidebar = ({open}) => {
           >
             {links.map(({ name, to },i) => (
               <motion.a
+                className="sidebar-link"
                 style={{
                   color: 'black',
                   fontSize: 30,

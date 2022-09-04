@@ -27,8 +27,8 @@ export default function ID({ data }) {
     const route = useRouter()
 
     return(
-        <Flex bgColor={'white'} padding={10} pt={20} height={'full'} display={'flex'} flexDirection={['column']} width={'full'} alignItems={'center'} justifyContent={'center'}>
-            <Box flexShrink={0} width={['90%', '90%', '50%', '50%']}>
+        <Flex bgColor={'white'} padding={[3,3,10]} pt={20} h={'full'} display={'flex'} flexDirection={['column']} width={'full'} alignItems={'center'} justifyContent={'center'}>
+            <Box flexShrink={0} width={['100%', '100%', '50%', '50%']}>
                 <Image
                     borderRadius='lg'
                     src={data.img}
@@ -39,7 +39,7 @@ export default function ID({ data }) {
             </Box>
             {
                 isMounted ? (
-                    <Box padding={8} width={['90%', '90%', '50%', '50%']}>
+                    <Box padding={[3,3,8,8]} width={['100%', '100%', '50%', '50%']}>
                         <Text
                             fontWeight='bold'
                             textTransform='uppercase'

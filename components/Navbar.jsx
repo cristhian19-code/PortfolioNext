@@ -1,10 +1,7 @@
-import { SunIcon, MoonIcon } from '@chakra-ui/icons'
 import { motion } from 'framer-motion'
 import {
     Flex,
-    Text,
     Button,
-    IconButton,
 } from '@chakra-ui/react'
 
 import { useRouter } from 'next/router'
@@ -29,10 +26,7 @@ export default function Navbar() {
                 width={'full'}
                 alignItems={'center'}
                 direction={['row']}
-                bg={darkmode ? 'blackAlpha.900' : 'white'}
-                shadow={'sm'}
                 justifyContent={'end'}
-                opacity={0.95}
                 py={3}
                 px={4}
                 zIndex={10}
@@ -60,7 +54,9 @@ export default function Navbar() {
                                     )
                                 })
                             }
-                            <motion.div
+                            {
+                                /*
+                                    <motion.div
                                 whileTap={{
                                     transition: .5,
                                     translateX: 5,
@@ -81,6 +77,8 @@ export default function Navbar() {
                                     }
                                 />
                             </motion.div>
+                                */
+                            }
                         </Flex>
                     </>
                 }

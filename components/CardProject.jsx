@@ -31,6 +31,7 @@ export default function CardProject({project,variants}) {
                 <Text
                     fontSize={25}
                     fontWeight={'bold'}
+                    color={'blackAlpha.700'}
                 >
                     {project.title}
                 </Text>

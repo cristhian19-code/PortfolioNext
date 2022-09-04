@@ -132,7 +132,7 @@ export default function Home({ data }) {
           <Container>
             <Text mt={20} fontSize={35} fontWeight={'bold'}>Conocimientos</Text>
             <FontAWList />
-            <Flex justifyContent={'center'} gap={20}>
+            <Flex flexDirection={['column','column','row','row']} justifyContent={'center'} gap={20}>
               {
                 technologies.map(techno => {
                   return (

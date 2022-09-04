@@ -1,14 +1,23 @@
 import CardProject from "../components/CardProject"
-import { Flex, Select } from '@chakra-ui/react'
+import { Container, Flex, Select } from '@chakra-ui/react'
 import { motion, } from 'framer-motion'
 import Layout from '../components/Layout'
 import { ArrowDownIcon } from '@chakra-ui/icons'
 import { useState } from "react"
+import { useEffect } from "react"
+import Spinner from "../components/Spinner"
 
 const ProjectsMotion = motion(Flex)
 
 export default function Projects({ data }) {
+  const [loading,setLoading] = useState(true);
   const [projects, setProjects] = useState(data)
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      setLoading(!loading)
+    },2000)
+  },[])
 
   const projectsVariants = {
     show: {
@@ -42,6 +51,14 @@ export default function Projects({ data }) {
     }
   }
 
+  if(loading){
+    return (
+      <Container maxW={'full'} h={'full'} display={'flex'} justifyContent={'center'} alignItems={'center'} bg={'blackAlpha.900'} p={0} m={0}>
+        <Spinner />
+      </Container>
+    )
+  }
+
   return (
     <Layout>
       <Flex mt={20}>
@@ -63,7 +80,7 @@ export default function Projects({ data }) {
         py={5}
         wrap={'wrap'}>
         {
-          projects.map(project => {
+          projects?.map(project => {
             return (
               <CardProject variants={projectVariant} key={project.title} project={project} />
             )
